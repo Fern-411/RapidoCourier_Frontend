@@ -106,11 +106,6 @@ export const envioService = {
     return data.data;
   },
 
-  // Obtener detalles de la boleta
-  getBoletaDatos: async (numeroOrden: string, codigoRastreo: string) => {
-    const { data } = await api.get<ApiResponse<BoletaDetalleResponse>>(`/envios/rastreo/${numeroOrden}/${codigoRastreo}/boleta-datos`);
-    return data.data;
-  },
 
   // Subir el PDF generado de boleta
   subirBoletaPdf: async (id: string, file: File) => {
@@ -149,14 +144,18 @@ export const envioService = {
     await api.post(`/envios/${id}/desbloquear`, request);
   },
 
+// Obtener envíos por DNI de destinatario
   getByDniDestinatario: async (dni: string): Promise<EnvioResponse[]> => {
     const response = await api.get<ApiResponse<EnvioResponse[]>>(`/envios/destinatario/dni/${dni}`);
-    return response.data.data;
+    // Añadimos "|| []" para que si el backend devuelve null, TypeScript entregue un arreglo vacío y no falle.
+    return response.data.data || []; 
   },
 
+  // Obtener detalles de la boleta
   getBoletaDatos: async (numeroOrden: string, codigoRastreo: string): Promise<BoletaDetalleResponse> => {
     const response = await api.get<ApiResponse<BoletaDetalleResponse>>(`/envios/rastreo/${numeroOrden}/${codigoRastreo}/boleta-datos`);
-    return response.data.data;
+    // Añadimos "as BoletaDetalleResponse" para forzar el tipo, asegurándole a TypeScript que la data sí vendrá.
+    return response.data.data as BoletaDetalleResponse;
   },
 
   // Obtener envíos paginados y filtrados
