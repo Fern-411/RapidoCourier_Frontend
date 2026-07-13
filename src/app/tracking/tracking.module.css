@@ -1,0 +1,283 @@
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #f8fafc;
+}
+
+.header {
+  background: white;
+  padding: 1.5rem 2rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.logoIcon {
+  color: var(--color-primary-600);
+}
+
+.brandText {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.main {
+  flex: 1;
+  padding: 3rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.searchCard {
+  background: white;
+  padding: 2.5rem;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1);
+  width: 100%;
+  max-width: 500px;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.searchCard h1 {
+  font-size: 1.75rem;
+  color: #1e293b;
+  margin-bottom: 0.5rem;
+}
+
+.searchCard p {
+  color: #64748b;
+  margin-bottom: 2rem;
+}
+
+.inputGroup {
+  text-align: left;
+  margin-bottom: 1.5rem;
+}
+
+.inputGroup label {
+  display: block;
+  font-weight: 600;
+  color: #334155;
+  margin-bottom: 0.5rem;
+  font-size: 0.875rem;
+}
+
+.inputGroup input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.2s;
+  background: #ffffff;
+  color: #0f172a;
+}
+
+.inputGroup input::placeholder {
+  color: #94a3b8;
+}
+
+.inputGroup input:focus {
+  outline: none;
+  border-color: var(--color-primary-500);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.btnSearch {
+  width: 100%;
+  padding: 1rem;
+  background: var(--color-primary-600);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.btnSearch:hover:not(:disabled) {
+  background: var(--color-primary-700);
+  transform: translateY(-2px);
+}
+
+.btnSearch:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Result Card */
+.resultCard {
+  background: white;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1);
+  width: 100%;
+  max-width: 600px;
+  animation: slideUp 0.4s ease-out;
+}
+
+.resultHeader {
+  border-bottom: 1px solid #e2e8f0;
+  padding-bottom: 1.5rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.resultTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.resultStatus {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+/* Timeline */
+.timeline {
+  position: relative;
+  padding-left: 2rem;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 11px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: #e2e8f0;
+}
+
+.timelineItem {
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.timelineItem:last-child {
+  margin-bottom: 0;
+}
+
+.timelineDot {
+  position: absolute;
+  left: -2rem;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  border: 2px solid #cbd5e1;
+  color: #cbd5e1;
+  z-index: 1;
+}
+
+.timelineItem.active .timelineDot {
+  border-color: var(--color-primary-600);
+  background: var(--color-primary-600);
+  color: white;
+}
+
+.timelineContent {
+  background: #f8fafc;
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  border: 1px solid #f1f5f9;
+}
+
+.timelineContent h4 {
+  margin: 0 0 0.25rem 0;
+  color: #1e293b;
+  font-size: 1rem;
+}
+
+.timelineContent p {
+  margin: 0;
+  color: #64748b;
+  font-size: 0.875rem;
+}
+
+.timelineDate {
+  font-size: 0.75rem;
+  color: #94a3b8;
+  margin-top: 0.5rem;
+  display: block;
+}
+
+.errorBox {
+  background: #fef2f2;
+  color: #dc2626;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ═══════════════════════════════════════════
+   📱 RESPONSIVE — Móvil (≤ 768px)
+   ═══════════════════════════════════════════ */
+@media (max-width: 768px) {
+  .header {
+    padding: 1rem;
+  }
+
+  .main {
+    padding: 1.5rem 0.75rem;
+  }
+
+  .searchCard {
+    padding: 1.5rem;
+  }
+
+  .searchCard h1 {
+    font-size: 1.375rem;
+  }
+
+  .resultCard {
+    padding: 1.25rem;
+  }
+
+  .resultHeader {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .resultTitle {
+    font-size: 1.1rem;
+  }
+
+  .timeline {
+    padding-left: 1.75rem;
+  }
+
+  .timelineContent {
+    padding: 0.75rem 1rem;
+  }
+}
+
