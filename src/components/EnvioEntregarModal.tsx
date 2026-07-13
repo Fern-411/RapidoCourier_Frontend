@@ -68,7 +68,10 @@ export function EnvioEntregarModal({ envioId, codigoRastreo, isOpen, onClose, on
     setIsLoading(true);
     setError(null);
     try {
-      await envioService.desbloquear(envioId, otp, nuevaClave);
+        await envioService.desbloquear(envioId, { 
+        otp: otp, 
+        nuevaClaveRecojo: nuevaClave 
+      });
       setIsLocked(false);
       setOtpRequested(false);
       setOtp("");
